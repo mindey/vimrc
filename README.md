@@ -7,7 +7,7 @@ Vimrc already has all the necessary vim settings that should be by default:
 * Persistent undo / history is enabled, and directory was configured to tmp file system
 * Tmux integration was added
 * Mouse is enabled by default
-* Hidden characters like tabs and trailing white spaces will is shown by default
+* Hidden characters like tabs and trailing white spaces will shown by default
 * Using ag instead of grep (if ag is installed)
 
 ...and more more features
