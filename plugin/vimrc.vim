@@ -111,12 +111,6 @@ endif
 
 set t_Co=256 " Enable 256 colors
 
-let mapleader = "," " Map leader
-
-let maplocalleader = "\\" " Local leader
-
-set nosmartindent " It does not work stable for some filetypes. Let's disable it
-
 " Store swap files in to fixed location
 set noswapfile
 set directory=/var/tmp//,/tmp//,.
