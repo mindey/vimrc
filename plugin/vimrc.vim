@@ -36,7 +36,8 @@ if has('mouse')
 endif
 
 if has('multi_byte') && &encoding ==# 'utf-8'
-  let &listchars = 'trail:·,tab:»·,eol: ,extends:→,precedes:←,nbsp:×'
+  set list
+  let &listchars = 'trail:·,tab:»·,extends:→,precedes:←,nbsp:×'
   let &fillchars = 'stl: ,stlnc: ,vert:│'
 
   if has('patch-7.4.338')
@@ -140,7 +141,9 @@ set incsearch " Show search matches while typing
 
 set display+=lastline " Display lastline instead of @
 
-set laststatus=2 " Enable statusline
+set laststatus=2 " Show statusline
+
+set showtabline=1 " Show tabline
 
 set magic " For regular expressions turn magic on
 
@@ -172,7 +175,7 @@ set smarttab " Be smart when using tabs
 
 set autoindent " Enable auto indent
 
-set smartindent " Smart indent
+set nosmartindent " Disable smart indent
 
 set wrap tw=0 " Enable word wrap, disable line break
 
@@ -184,7 +187,7 @@ set termencoding=utf-8 " Terminal encoding
 
 set fileencodings=utf8 " Supported file encodings
 
-set number " Disable line numbers
+set number " Enable line numbers
 
 set ruler " Always display cursor position
 
@@ -197,8 +200,6 @@ set wildmenu " Turn on the Wild menu
 set wildmode=list:longest,list:full
 
 set wildcharm=<Tab>
-
-set list
 
 " Ignore files
 set wildignore+=.DS_Store,.git/**,__pycache__,tmp/**,*.log,.bundle/**,node_modules/**
@@ -216,11 +217,7 @@ set nofoldenable
 
 set noshowmode " Suppress mode change messages
 
-set background=dark " Dark background by default
-
 set secure exrc " Allow load .vimrc or _vimrc from current directory
-
-set showtabline=1 " Show tabline
 
 set shortmess+=I " Don't display the intro message on starting Vim.
 
