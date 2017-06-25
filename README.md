@@ -11,13 +11,3 @@ Vimrc already has all the necessary vim settings that should be by default:
 * Using ag instead of grep (if ag is installed)
 
 ...and more more features
-
-# Installation
-
-I recommend using [vim-plug](https://github.com/junegunn/vim-plug), which is my favorite extension for installing vim packages.
-
-How I use the vim-plug along with this extension you can see in this project: [Vim](https://github.com/aliev/vim).
-
-This is a very simple configuration file that will allow you to use your own vimrc (~/.vimrc.local) file without changing anything in base config.
-
-In any other case, the installation of this extension is standard
