@@ -159,8 +159,6 @@ set diffopt+=vertical " Vertical diff
 
 set acd " Vim will change the current working directory whenever you open a file
 
-set autoread " Reload files changed outside automatically
-
 set tabstop=4 " Number of spaces that a <Tab> in the file counts for
 
 set softtabstop=0 " Number of spaces that a <Tab> counts for while performing editing operations
@@ -191,7 +189,11 @@ set number " Enable line numbers
 
 set ruler " Always display cursor position
 
-set hidden " Enable hidden buffers
+set nohidden " Disable hidden buffers
+
+set autowrite " Automatically save before commands like :next and :make
+
+set autoread " Reload files changed outside automatically
 
 set noautochdir " Change the current working directory whenever you open a file
 
