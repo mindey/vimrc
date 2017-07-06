@@ -71,20 +71,14 @@ if has("autocmd")
   augroup END
 endif
 
-if executable('ag')
+if isdirectory('.git') && executable('git')
+  set grepprg=git\ grep\ -nI
+endif
+
+if executable('ag') && !isdirectory('.git')
   " Silver searcher instead of grep
   set grepprg=ag\ --vimgrep
   set grepformat=%f:%l:%c%m
-endif
-
-if exists("+undofile")
-  " Store undofile in to fixed location
-  " undofile - This allows you to use undos after exiting and restarting
-  " This, like swap and backups, uses .vim-undo first, then ~/.vim/undo
-  " :help undo-persistence
-  " This is only present in 7.3+
-  set undofile
-  set undodir=/var/tmp//,/tmp//,.
 endif
 
 if &shell =~# 'fish$'
@@ -101,10 +95,8 @@ if !&sidescrolloff
   set sidescrolloff=5
 endif
 
-if v:version > 703 || v:version == 703 && has("patch541")
-  " Delete comment character when joining commented lines
-  set formatoptions+=j
-endif
+" Delete comment character when joining commented lines
+set formatoptions+=j
 
 if &history < 1000
   set history=1000
@@ -117,8 +109,13 @@ set noswapfile
 set directory=/var/tmp//,/tmp//,.
 
 " Store backup files in to fixed location
-set nobackup
+set backup
+set backupcopy=yes
 set backupdir=/var/tmp//,/tmp//,.
+
+" Store undofile in to fixed location
+set undofile
+set undodir=/var/tmp//,/tmp//,.
 
 " This will set your path variable to current directory
 " (from which you launched vim) and to all directories
@@ -189,7 +186,7 @@ set number " Enable line numbers
 
 set ruler " Always display cursor position
 
-set nohidden " Disable hidden buffers
+set hidden " Enable hidden buffers
 
 set autowrite " Automatically save before commands like :next and :make
 
@@ -207,8 +204,6 @@ set wildcharm=<Tab>
 set wildignore+=.DS_Store,.git/**,__pycache__,tmp/**,*.log,.bundle/**,node_modules/**
 set wildignore+=*.rbc,.rbx,*.scssc,*.sassc,.sass-cache,*.pyc,*.gem
 set wildignore+=*.jpg,*.jpeg,*.tiff,*.gif,*.png,*.svg,*.psd,*.pdf
-
-set conceallevel=2 " Conceal level
 
 set modelines=1 " Make Vim only use folding settings for current file
 
