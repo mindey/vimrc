@@ -140,7 +140,7 @@ set display+=lastline " Display lastline instead of @
 
 set laststatus=2 " Show statusline
 
-set showtabline=1 " Show tabline
+set showtabline=2 " Always show tabline
 
 set magic " For regular expressions turn magic on
 
