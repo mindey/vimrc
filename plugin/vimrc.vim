@@ -21,7 +21,7 @@ if has('syntax') && !exists('g:syntax_on')
 endif
 
 if has('mouse')
-  set mouse=a " Enable mouse support
+  set mouse= " Disable mouse support
   set mousemodel=popup " Use the mouse for copy/paste with popup in gui vim
   set mousehide " Hide cursor while typing
   if exists("$TMUX")
