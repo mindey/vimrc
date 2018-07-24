@@ -104,6 +104,10 @@ endif
 
 set t_Co=256 " Enable 256 colors
 
+if has("termguicolors")
+  set termguicolors
+endif
+
 " Store swap files in to fixed location
 set noswapfile
 set directory=/var/tmp//,/tmp//,.
