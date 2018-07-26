@@ -102,8 +102,6 @@ if &history < 1000
   set history=1000
 endif
 
-set t_Co=256 " Enable 256 colors
-
 if has("termguicolors")
   set termguicolors
 endif
@@ -128,7 +126,7 @@ set path=.,,**
 
 set ttimeout ttimeoutlen=0 notimeout " Disable timeout for Esc key
 set ttyfast " Optimize for fast terminal connections
-set lazyredraw " Don't redraw while executing macros (good performance config)
+set nolazyredraw " Enabling lazyredraw may cause flickering problem
 
 set completeopt=menuone,longest " Completion do not select the first candidate
 
