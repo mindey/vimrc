@@ -1,6 +1,6 @@
 " vimrc.vim - Defaults everyone can agree on
 " Maintainer:   Ali Aliyev <https://github.com/aliev/>
-" Version:      1.1
+" Version:      1.2
 
 if exists('g:loaded_vimrc') || &compatible
   finish
@@ -102,10 +102,6 @@ if &history < 1000
   set history=1000
 endif
 
-if has("termguicolors")
-  set termguicolors
-endif
-
 " Store swap files in to fixed location
 set noswapfile
 set directory=/var/tmp//,/tmp//,.
@@ -126,9 +122,10 @@ set path=.,,**
 
 set ttimeout ttimeoutlen=0 notimeout " Disable timeout for Esc key
 set ttyfast " Optimize for fast terminal connections
-set nolazyredraw " Enabling lazyredraw may cause flickering problem
+set nolazyredraw
+set noshowcmd
 
-set completeopt=menuone,longest " Completion do not select the first candidate
+set completeopt=menuone,noselect " Completion do not select the first candidate
 
 set complete-=i " Disable completion by included files
 
@@ -149,8 +146,6 @@ set magic " For regular expressions turn magic on
 set ignorecase " Searches are Non Case-sensitive
 
 set smartcase " Do smart case matching when searching
-
-set showcmd " Show incomplete cmds down the bottom
 
 set title " Show title
 
