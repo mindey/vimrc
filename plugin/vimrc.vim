@@ -2,6 +2,9 @@
 " Maintainer:   Ali Aliyev <https://github.com/aliev/>
 " Version:      1.2
 
+let mapleader=','
+let mapleaderlocal='\'
+
 if exists('g:loaded_vimrc') || &compatible
   finish
 else
@@ -18,6 +21,7 @@ endif
 
 if has('syntax') && !exists('g:syntax_on')
   syntax enable
+  syntax sync minlines=256
 endif
 
 if has('mouse')
@@ -120,10 +124,14 @@ set undodir=/var/tmp//,/tmp//,.
 " under current directory recursively.
 set path=.,,**
 
+" Performance fixes
+set regexpengine=1
 set ttimeout ttimeoutlen=0 notimeout " Disable timeout for Esc key
 set ttyfast " Optimize for fast terminal connections
-set nolazyredraw
+set lazyredraw
 set noshowcmd
+set foldmethod=marker
+set synmaxcol=128
 
 set completeopt=menuone,noselect " Completion do not select the first candidate
 
@@ -198,16 +206,11 @@ set wildmode=list:longest,list:full
 set wildcharm=<Tab>
 
 " Ignore files
-set wildignore+=.DS_Store,.git/**,__pycache__,tmp/**,*.log,.bundle/**,node_modules/**
+set wildignore+=.DS_Store,.git/**,__pycache__,tmp/**,*.log,.bundle/**,node_modules/**,env/**
 set wildignore+=*.rbc,.rbx,*.scssc,*.sassc,.sass-cache,*.pyc,*.gem
 set wildignore+=*.jpg,*.jpeg,*.tiff,*.gif,*.png,*.svg,*.psd,*.pdf
 
 set modelines=1 " Make Vim only use folding settings for current file
-
-" Do not fold by default. But if, do it up to 3 levels.
-set foldmethod=indent
-set foldnestmax=3
-set nofoldenable
 
 set noshowmode " Suppress mode change messages
 
