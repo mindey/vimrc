@@ -2,9 +2,6 @@
 " Maintainer:   Ali Aliyev <https://github.com/aliev/>
 " Version:      1.2
 
-let mapleader=','
-let mapleaderlocal='\'
-
 if exists('g:loaded_vimrc') || &compatible
   finish
 else
