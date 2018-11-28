@@ -229,3 +229,13 @@ let g:netrw_sort_sequence = '[\/]$,*'
 
 " use the previous window to open file
 let g:netrw_browse_split = 4
+"
+" Visually select the text that was last edited/pasted
+noremap gV `[v`]
+"
+" Let's remove this annoying :W
+cnoremap W w
+"
+" Keep selection after in/outdent
+vnoremap < <gv
+vnoremap > >gv
