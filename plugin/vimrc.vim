@@ -233,8 +233,9 @@ let g:netrw_browse_split = 4
 " Visually select the text that was last edited/pasted
 noremap gV `[v`]
 "
-" Let's remove this annoying :W
+" Let's remove this annoying :W and :Q
 cnoremap W w
+cnoremap Q q
 "
 " Keep selection after in/outdent
 vnoremap < <gv
