@@ -1,6 +1,6 @@
 " vimrc.vim - Defaults everyone can agree on
 " Maintainer:   Ali Aliyev <https://github.com/aliev/>
-" Version:      1.1
+" Version:      1.2
 
 if exists('g:loaded_vimrc') || &compatible
   finish
@@ -18,6 +18,7 @@ endif
 
 if has('syntax') && !exists('g:syntax_on')
   syntax enable
+  syntax sync minlines=256
 endif
 
 if has('mouse')
@@ -102,8 +103,6 @@ if &history < 1000
   set history=1000
 endif
 
-set t_Co=256 " Enable 256 colors
-
 " Store swap files in to fixed location
 set noswapfile
 set directory=/var/tmp//,/tmp//,.
@@ -122,11 +121,16 @@ set undodir=/var/tmp//,/tmp//,.
 " under current directory recursively.
 set path=.,,**
 
+" Performance fixes
+set regexpengine=1
 set ttimeout ttimeoutlen=0 notimeout " Disable timeout for Esc key
 set ttyfast " Optimize for fast terminal connections
-set lazyredraw " Don't redraw while executing macros (good performance config)
+set lazyredraw
+set noshowcmd
+set foldmethod=marker
+set synmaxcol=128
 
-set completeopt=menuone,longest " Completion do not select the first candidate
+set completeopt=menuone,noselect " Completion do not select the first candidate
 
 set complete-=i " Disable completion by included files
 
@@ -147,8 +151,6 @@ set magic " For regular expressions turn magic on
 set ignorecase " Searches are Non Case-sensitive
 
 set smartcase " Do smart case matching when searching
-
-set showcmd " Show incomplete cmds down the bottom
 
 set title " Show title
 
@@ -201,16 +203,11 @@ set wildmode=list:longest,list:full
 set wildcharm=<Tab>
 
 " Ignore files
-set wildignore+=.DS_Store,.git/**,__pycache__,tmp/**,*.log,.bundle/**,node_modules/**
+set wildignore+=.DS_Store,.git/**,__pycache__,tmp/**,*.log,.bundle/**,node_modules/**,env/**
 set wildignore+=*.rbc,.rbx,*.scssc,*.sassc,.sass-cache,*.pyc,*.gem
 set wildignore+=*.jpg,*.jpeg,*.tiff,*.gif,*.png,*.svg,*.psd,*.pdf
 
 set modelines=1 " Make Vim only use folding settings for current file
-
-" Do not fold by default. But if, do it up to 3 levels.
-set foldmethod=indent
-set foldnestmax=3
-set nofoldenable
 
 set noshowmode " Suppress mode change messages
 
@@ -232,3 +229,14 @@ let g:netrw_sort_sequence = '[\/]$,*'
 
 " use the previous window to open file
 let g:netrw_browse_split = 4
+"
+" Visually select the text that was last edited/pasted
+noremap gV `[v`]
+"
+" Let's remove this annoying :W and :Q
+cnoremap W w
+cnoremap Q q
+"
+" Keep selection after in/outdent
+vnoremap < <gv
+vnoremap > >gv
