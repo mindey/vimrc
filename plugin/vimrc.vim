@@ -240,3 +240,49 @@ cnoremap Q q
 " Keep selection after in/outdent
 vnoremap < <gv
 vnoremap > >gv
+
+" Mindey (xfc4-terminal) needs:
+set background=dark
+
+" Copying with F9
+function Func2X11()
+    :call system('xclip -selection c', @r)
+endfunction
+vnoremap <F9> "ry:call Func2X11()<cr>
+vnoremap <m-c> "ry:call Func2X11()<cr>
+vnoremap <ESC-c> "ry:call Func2X11()<cr>
+
+" Move a line of text using Ctrl+[jk]
+function! s:swap_lines(n1, n2)
+    let line1 = getline(a:n1)
+    let line2 = getline(a:n2)
+    call setline(a:n1, line2)
+    call setline(a:n2, line1)
+endfunction
+function! s:swap_up()
+    let n = line('.')
+    if n == 1
+        return
+    endif
+    call s:swap_lines(n, n - 1)
+    exec n - 1
+endfunction
+function! s:swap_down()
+    let n = line('.')
+    if n == line('$')
+        return
+    endif
+    call s:swap_lines(n, n + 1)
+    exec n + 1
+endfunction
+noremap <silent> <c-k> :call <SID>swap_up()<CR>
+noremap <silent> <c-j> :call <SID>swap_down()<CR>
+
+" Slimux
+map <C-l> :SlimuxREPLSendLine<CR>
+vmap <C-l> :SlimuxREPLSendSelection<CR>
+
+" VimWiki
+let g:vimwiki_list = [{'path': '~/.wiki/', 'path_html': '~/.html/', 'css_name': 'css/main.css', 'js_main': 'js/main.js', 'auto_export': 0, 'template_path': '~/.wiki/templates/', 'template_default': 'main', 'template_ext': '.html'}]
+noremap <S-k> :VimwikiDiaryPrevDay<CR>
+noremap <S-j> :VimwikiDiaryNextDay<CR>
